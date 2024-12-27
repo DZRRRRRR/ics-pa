@@ -56,6 +56,34 @@ static int cmd_q(char *args) {
 
 static int cmd_help(char *args);
 
+static int cmd_si(char * n){
+  return -1;
+}
+
+static int cmd_info(char *args){
+  return -1;
+}
+
+static int cmd_p(char * args){
+  return -1;
+}
+
+static int cmd_w(char * args){
+  return -1;
+}
+
+static int cmd_d(char * args){
+
+  return -1;
+}
+
+static int cmd_x(char *args){
+
+  return -1;
+}
+
+
+
 static struct {
   const char *name;
   const char *description;
@@ -64,6 +92,24 @@ static struct {
   { "help", "Display information about all supported commands", cmd_help },
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
+  {
+    "si","run N steps and stop",cmd_si
+  },
+  {
+   "info","print the state of registor or print the info of watch point",cmd_info 
+  },
+  {
+    "x","first cal the expr, second print the data of the addr of the result of expr",cmd_x
+  },
+  {
+    "p","cal the result of expr",cmd_p
+  },
+  {
+    "w","set the watch point,when the val of the expr changed,stop",cmd_w
+  },
+  {
+    "d","delete the watch point",cmd_d
+  }
 
   /* TODO: Add more commands */
 
