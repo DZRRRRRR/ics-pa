@@ -62,30 +62,40 @@ static int cmd_si(char * args){
   uint64_t steps = atoi(arg);
   printf("the step is %lu\r\n",steps);
   cpu_exec(steps);
-
   return 0;
 }
 
 static int cmd_info(char *args){
-  return -1;
+  char *arg = strtok(NULL, " ");
+  
+  if (strcmp(arg,"r") == 0) 
+  {
+    isa_reg_display();
+  }
+  else if(strcmp(arg,"w")==0)
+  {
+  }
+
+
+  return 0;
 }
 
 static int cmd_p(char * args){
-  return -1;
+  return 0;
 }
 
 static int cmd_w(char * args){
-  return -1;
+  return 0;
 }
 
 static int cmd_d(char * args){
 
-  return -1;
+  return 0;
 }
 
 static int cmd_x(char *args){
 
-  return -1;
+  return 0;
 }
 
 
