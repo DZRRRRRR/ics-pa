@@ -26,6 +26,9 @@ const char *regs[] = {
 void isa_reg_display() {
  int len = ARRLEN(regs);
  printf("regs size %d\r\n",len);
+ for (int i =0;i<len;i++){
+   printf("%s\r\n",regs[i]);
+ }
 }
 
 word_t isa_reg_str2val(const char *s, bool *success) {
