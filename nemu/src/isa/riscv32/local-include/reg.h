@@ -27,7 +27,6 @@ static inline int check_reg_idx(int idx) {
 
 static inline const char* reg_name(int idx) {
   extern const char* regs[];
-  printf("%s\r\n",regs[check_reg_idx(idx)]);
   return regs[check_reg_idx(idx)];
 }
 
