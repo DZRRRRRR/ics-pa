@@ -19,6 +19,8 @@
 #include <readline/history.h>
 #include "sdb.h"
 
+extern NEMUState nemu_state; 
+
 static int is_batch_mode = false;
 
 void init_regex();
