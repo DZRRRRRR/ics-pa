@@ -25,7 +25,6 @@ const char *regs[] = {
 
 void isa_reg_display() {
  int len = ARRLEN(regs);
- 
  printf("regs size %d\r\n",len);
 }
 
