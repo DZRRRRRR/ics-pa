@@ -56,7 +56,14 @@ static int cmd_q(char *args) {
 
 static int cmd_help(char *args);
 
-static int cmd_si(char * n){
+static int cmd_si(char * args){
+  char *arg = strtok(NULL, " ");
+  int steps = atoi(arg);
+  printf("the step is %d\r\n",steps);
+  
+
+
+
   return -1;
 }
 
