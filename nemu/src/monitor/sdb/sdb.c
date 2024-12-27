@@ -56,10 +56,11 @@ static int cmd_q(char *args) {
 
 static int cmd_help(char *args);
 
+
 static int cmd_si(char * args){
   char *arg = strtok(NULL, " ");
-  int steps = atoi(arg);
-  printf("the step is %d\r\n",steps);
+  uint64_t steps = atoi(arg);
+  printf("the step is %lu\r\n",steps);
   cpu_exec(steps);
 
   return -1;
