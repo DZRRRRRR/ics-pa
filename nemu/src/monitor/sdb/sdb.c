@@ -70,6 +70,7 @@ static int cmd_info(char *args){
   printf("arg is %s,%d",arg,strcmp(arg,"r")); 
   if (strcmp(arg,"r") == 0) 
   {
+    printf("im in\r\n");
     isa_reg_display();
   }
   else if(strcmp(arg,"w")==0)
