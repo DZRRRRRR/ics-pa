@@ -27,7 +27,7 @@ void isa_reg_display() {
  int len = ARRLEN(regs);
  printf("regs size %d\r\n",len);
  for (int i =0;i<len;i++){
-   printf("%s\r\n",regs[i]);
+   printf("%s \t 0x:%d \t  \r\n",regs[i],gpr(i));
  }
 }
 
