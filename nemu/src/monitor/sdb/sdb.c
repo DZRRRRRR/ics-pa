@@ -63,7 +63,7 @@ static int cmd_si(char * args){
   printf("the step is %lu\r\n",steps);
   cpu_exec(steps);
 
-  return -1;
+  return 0;
 }
 
 static int cmd_info(char *args){
