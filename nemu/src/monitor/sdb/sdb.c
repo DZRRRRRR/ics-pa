@@ -60,9 +60,7 @@ static int cmd_si(char * args){
   char *arg = strtok(NULL, " ");
   int steps = atoi(arg);
   printf("the step is %d\r\n",steps);
-  
-
-
+  cpu_exec(steps);
 
   return -1;
 }
