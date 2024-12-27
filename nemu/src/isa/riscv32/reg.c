@@ -28,7 +28,6 @@ void isa_reg_display() {
  printf("regs size %d\r\n",len);
  for (int i =0;i<len;i++){
    printf("%s \t 0x:%d \t  \r\n",regs[i],gpr(i));
-   printf("change!\r\n");
  }
 }
 
