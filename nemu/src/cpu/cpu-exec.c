@@ -28,7 +28,8 @@
 CPU_state cpu = {};
 uint64_t g_nr_guest_inst = 0;
 static uint64_t g_timer = 0; // unit: us
-static bool g_print_step = false;
+//static bool g_print_step = false;
+static bool g_print_step = true;
 
 void device_update();
 
@@ -76,6 +77,7 @@ static void execute(uint64_t n) {
   for (;n > 0; n --) {
     exec_once(&s, cpu.pc);
     g_nr_guest_inst ++;
+    //printf("the n is %lu, the g_nr_guest_inst is %lu\r\n",n,g_nr_guest_inst);
     trace_and_difftest(&s, cpu.pc);
     if (nemu_state.state != NEMU_RUNNING) break;
     IFDEF(CONFIG_DEVICE, device_update());

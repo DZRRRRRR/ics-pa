@@ -44,7 +44,7 @@ static void decode_operand(Decode *s, int *rd_, word_t *src1, word_t *src2, word
 }
 
 static int decode_exec(Decode *s) {
-  s->dnpc = s->snpc;
+  s->dnpc = s->snpc;//snpc:static pc,its from the mem; dnpc:dynamic pc ,its the next inst of simu cpu;
 
 #define INSTPAT_INST(s) ((s)->isa.inst)
 #define INSTPAT_MATCH(s, name, type, ... /* execute body */ ) { \

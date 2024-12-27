@@ -19,6 +19,8 @@
 #include <readline/history.h>
 #include "sdb.h"
 
+extern NEMUState nemu_state; 
+
 static int is_batch_mode = false;
 
 void init_regex();
@@ -54,6 +56,51 @@ static int cmd_q(char *args) {
 
 static int cmd_help(char *args);
 
+
+static int cmd_si(char * args){
+  char *arg = strtok(NULL, " ");
+  uint64_t steps = atoi(arg);
+  printf("the step is %lu\r\n",steps);
+  cpu_exec(steps);
+  return 0;
+}
+
+static int cmd_info(char *args){
+  char *arg = strtok(NULL, " ");
+  printf("arg is %s,%d",arg,strcmp(arg,"r")); 
+  if (strcmp(arg,"r") == 0) 
+  {
+    printf("im in\r\n");
+    isa_reg_display();
+  }
+  else if(strcmp(arg,"w")==0)
+  {
+  }
+
+
+  return 0;
+}
+
+static int cmd_p(char * args){
+  return 0;
+}
+
+static int cmd_w(char * args){
+  return 0;
+}
+
+static int cmd_d(char * args){
+
+  return 0;
+}
+
+static int cmd_x(char *args){
+
+  return 0;
+}
+
+
+
 static struct {
   const char *name;
   const char *description;
@@ -62,6 +109,24 @@ static struct {
   { "help", "Display information about all supported commands", cmd_help },
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
+  {
+    "si","run N steps and stop",cmd_si
+  },
+  {
+   "info","print the state of registor or print the info of watch point",cmd_info 
+  },
+  {
+    "x","first cal the expr, second print the data of the addr of the result of expr",cmd_x
+  },
+  {
+    "p","cal the result of expr",cmd_p
+  },
+  {
+    "w","set the watch point,when the val of the expr changed,stop",cmd_w
+  },
+  {
+    "d","delete the watch point",cmd_d
+  }
 
   /* TODO: Add more commands */
 
@@ -125,7 +190,10 @@ void sdb_mainloop() {
     int i;
     for (i = 0; i < NR_CMD; i ++) {
       if (strcmp(cmd, cmd_table[i].name) == 0) {
-        if (cmd_table[i].handler(args) < 0) { return; }
+        if (cmd_table[i].handler(args) < 0) {
+         nemu_state.state = NEMU_QUIT; 
+        return;
+        }
         break;
       }
     }
